@@ -5,11 +5,11 @@ var dialogController = app.controller('dialogController', function($scope){
 });
 
 app.run(function(ngDialog, $rootScope){
-
-	var socket = io('http://localhost:8000');
+	//console.log('sallllll');
+	var socket = io('https://wtpt-alexnixi.c9.io/');
 	socket.on('id', function(data){
 		ngDialog.open({
-		    template: 'client/dialog.html',
+		    template: 'https://wtpt-alexnixi.c9.io/client/dialog.html',
 		    controller: 'dialogController',
 		    data: {
 		    	id: data.id,
@@ -20,6 +20,7 @@ app.run(function(ngDialog, $rootScope){
 	
 	socket.on('next', function(data){
 		// manipulate Google Slide to move foreward
+		$('body > div.punch-full-screen-element.punch-full-window-overlay > iframe').contents().find("body > div:nth-child(15) > div.punch-viewer-container").click();
 	});
 
 	socket.on('previous', function(data){
